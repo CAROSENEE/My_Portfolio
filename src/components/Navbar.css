@@ -439,4 +439,117 @@
   .logo-sub {
     display: none;
   }
+}/* ================================
+   FINAL IDENTITY PANEL POLISH
+   ================================ */
+
+.identity-panel {
+  min-width: 390px;
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
+
+.navbar-logo {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-decoration: none;
+}
+
+.logo-image {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 7px rgba(79, 255, 176, 0.28));
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+
+.logo-name {
+  color: #f2f7fb;
+  font-family: "Courier New", monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.logo-sub {
+  color: #59ffb4;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+/* Keep circuit behind the identity */
+.identity-panel .circuit-animation {
+  z-index: 1;
+}
+
+.identity-panel .navbar-logo {
+  z-index: 5;
+}
+
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 900px) {
+  .identity-panel {
+    min-width: auto;
+  }
+
+  .logo-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .logo-name {
+    font-size: 13px;
+  }
+
+  .logo-sub {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .identity-panel {
+    height: 72px;
+  }
+
+  .navbar-logo {
+    gap: 9px;
+  }
+
+  .logo-image {
+    width: 42px;
+    height: 42px;
+  }
+
+  .logo-name {
+    font-size: 11px;
+    letter-spacing: 0.4px;
+  }
+
+  .logo-sub {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+}
+
