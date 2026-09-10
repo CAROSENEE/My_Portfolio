@@ -1,5 +1,10 @@
+/* =========================================
+   CAROSINE CIRCUIT ANIMATION
+   ========================================= */
+
 .circuit-animation {
   position: absolute;
+
   top: 50%;
   left: 50%;
 
@@ -18,205 +23,213 @@
   overflow: visible;
 }
 
+
+/* =========================================
+   CIRCUIT TRACES
+   ========================================= */
+
 .circuit-trace {
   fill: none;
+
   stroke: #59ffb4;
   stroke-width: 1.2;
+
   stroke-linecap: square;
   stroke-linejoin: round;
 
-  opacity: 0.14;
-
-  filter: drop-shadow(0 0 3px rgba(89, 255, 180, 0.18));
+  opacity: 0.16;
 
   stroke-dasharray: 5 7;
-}
-
-.circuit-active .circuit-trace {
-  animation: tracePulse 3.6s ease-in-out infinite;
-}
-
-.trace-left {
-  animation-delay: 0s !important;
-}
-
-.trace-left-upper {
-  animation-delay: 0.35s !important;
-}
-
-.trace-left-lower {
-  animation-delay: 0.65s !important;
-}
-
-.trace-right {
-  animation-delay: 0.15s !important;
-}
-
-.trace-right-upper {
-  animation-delay: 0.5s !important;
-}
-
-.trace-right-lower {
-  animation-delay: 0.8s !important;
-}
-
-.circuit-node {
-  fill: #59ffb4;
-  opacity: 0.15;
-
-  filter: drop-shadow(0 0 5px rgba(89, 255, 180, 0.35));
-}
-
-.circuit-active .circuit-node {
-  animation: nodePulse 2.4s ease-in-out infinite;
-}
-
-.node-1 {
-  animation-delay: 0s !important;
-}
-
-.node-2 {
-  animation-delay: 0.25s !important;
-}
-
-.node-3 {
-  animation-delay: 0.5s !important;
-}
-
-.node-4 {
-  animation-delay: 0.15s !important;
-}
-
-.node-5 {
-  animation-delay: 0.4s !important;
-}
-
-.node-6 {
-  animation-delay: 0.7s !important;
-}
-
-.circuit-chip {
-  fill: rgba(89, 255, 180, 0.08);
-  stroke: #59ffb4;
-  stroke-width: 0.8;
-  opacity: 0.2;
-}
-
-.circuit-pulse {
-  fill: #59ffb4;
 
   filter:
-    drop-shadow(0 0 4px rgba(89, 255, 180, 0.8))
-    drop-shadow(0 0 9px rgba(89, 255, 180, 0.4));
+    drop-shadow(0 0 3px rgba(89, 255, 180, 0.18));
 
-  opacity: 0;
+  animation: traceFlow 4.5s linear infinite;
 }
 
-.circuit-active .pulse-left {
-  animation: pulseLeft 3.8s linear infinite;
+
+/* Individual trace timing */
+
+#left-main {
+  animation-delay: 0s;
 }
 
-.circuit-active .pulse-right {
-  animation: pulseRight 3.8s linear infinite;
+#left-upper {
+  animation-delay: 0.35s;
 }
 
-.circuit-paused .circuit-trace,
-.circuit-paused .circuit-node,
-.circuit-paused .circuit-chip,
-.circuit-paused .circuit-pulse {
-  animation-play-state: paused !important;
+#left-lower {
+  animation-delay: 0.7s;
 }
 
-@keyframes tracePulse {
+#right-main {
+  animation-delay: 0.15s;
+}
+
+#right-upper {
+  animation-delay: 0.5s;
+}
+
+#right-lower {
+  animation-delay: 0.85s;
+}
+
+
+/* =========================================
+   MOVING CIRCUIT FLOW
+   ========================================= */
+
+@keyframes traceFlow {
   0% {
     opacity: 0.08;
     stroke-dashoffset: 0;
   }
 
-  35% {
+  25% {
+    opacity: 0.25;
+  }
+
+  50% {
     opacity: 0.42;
   }
 
-  65% {
+  75% {
     opacity: 0.2;
   }
 
   100% {
     opacity: 0.08;
-    stroke-dashoffset: -24;
+    stroke-dashoffset: -70;
   }
 }
+
+
+/* =========================================
+   CONNECTION DOTS
+   ========================================= */
+
+.circuit-node {
+  fill: #59ffb4;
+
+  opacity: 0.2;
+
+  filter:
+    drop-shadow(0 0 4px rgba(89, 255, 180, 0.5))
+    drop-shadow(0 0 8px rgba(89, 255, 180, 0.18));
+
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+
+/* Dot animation */
+
+.circuit-active .circuit-node {
+  animation: nodePulse 2.6s ease-in-out infinite;
+}
+
+
+/* Different timing */
+
+.node-1 {
+  animation-delay: 0s;
+}
+
+.node-2 {
+  animation-delay: 0.3s;
+}
+
+.node-3 {
+  animation-delay: 0.6s;
+}
+
+.node-4 {
+  animation-delay: 0.15s;
+}
+
+.node-5 {
+  animation-delay: 0.45s;
+}
+
+.node-6 {
+  animation-delay: 0.75s;
+}
+
 
 @keyframes nodePulse {
   0%,
   100% {
-    opacity: 0.12;
-    transform: scale(0.8);
-    transform-origin: center;
+    opacity: 0.15;
+    transform: scale(0.75);
   }
 
   50% {
-    opacity: 0.8;
-    transform: scale(1.35);
-    transform-origin: center;
+    opacity: 0.9;
+    transform: scale(1.45);
   }
 }
 
-@keyframes pulseLeft {
-  0% {
-    opacity: 0;
-    transform: translate(260px, 50px);
-  }
 
-  8% {
-    opacity: 1;
-  }
+/* =========================================
+   MOVING LIGHT DOTS
+   ========================================= */
 
-  45% {
-    opacity: 1;
-  }
+.circuit-pulse {
+  fill: #59ffb4;
 
-  60% {
-    opacity: 0;
-    transform: translate(38px, 70px);
-  }
+  opacity: 0;
 
-  100% {
-    opacity: 0;
-    transform: translate(38px, 70px);
-  }
+  filter:
+    drop-shadow(0 0 4px rgba(89, 255, 180, 1))
+    drop-shadow(0 0 9px rgba(89, 255, 180, 0.7))
+    drop-shadow(0 0 15px rgba(89, 255, 180, 0.3));
 }
 
-@keyframes pulseRight {
-  0% {
-    opacity: 0;
-    transform: translate(260px, 50px);
-  }
 
-  12% {
-    opacity: 1;
-  }
+/* Activate moving dots */
 
-  48% {
-    opacity: 1;
-  }
-
-  63% {
-    opacity: 0;
-    transform: translate(482px, 70px);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(482px, 70px);
-  }
+.circuit-active .circuit-pulse {
+  opacity: 1;
 }
+
+
+/* =========================================
+   PAUSED STATE
+   ========================================= */
+
+.circuit-paused .circuit-trace,
+.circuit-paused .circuit-node,
+.circuit-paused .circuit-pulse {
+  animation-play-state: paused !important;
+}
+
+.circuit-paused .circuit-trace {
+  opacity: 0.08;
+}
+
+.circuit-paused .circuit-node {
+  opacity: 0.1;
+}
+
+.circuit-paused .circuit-pulse {
+  opacity: 0;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
 
 @media (max-width: 900px) {
   .circuit-animation {
     width: 430px;
   }
+
+  .circuit-trace {
+    stroke-width: 1.1;
+  }
 }
+
 
 @media (max-width: 680px) {
   .circuit-animation {

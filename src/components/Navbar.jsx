@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import logo from "../assets/carosine-emblem.png";
 import CircuitAnimation from "./CircuitAnimation";
 import "./Navbar.css";
 
@@ -48,11 +49,22 @@ function Navbar() {
           aria-label="Go to home"
           onClick={handleNavClick}
         >
-          <span className="logo-mark">⌬</span>
+          {/* CAROSINE Logo */}
+          <img
+            src={logo}
+            alt="CAROSINE Logo"
+            className="logo-image"
+          />
 
+          {/* Name + Brand */}
           <span className="logo-text">
-            <span className="logo-name">Md.Moshiur Rahman Sajol</span>
-            <span className="logo-sub">CAROSINE</span>
+            <span className="logo-name">
+              Md. Moshiur Rahman Sajol
+            </span>
+
+            <span className="logo-sub">
+              CAROSINE
+            </span>
           </span>
         </a>
       </div>
@@ -64,7 +76,7 @@ function Navbar() {
             href={item.href}
             onClick={handleNavClick}
           >
-            {item.label}
+            <span>/</span> {item.label}
           </a>
         ))}
       </nav>
@@ -100,8 +112,14 @@ function Navbar() {
             href={item.href}
             onClick={handleNavClick}
           >
-            <span>0{index + 1}</span>
-            {item.label}
+            <span className="mobile-menu-number">
+              0{index + 1}
+            </span>
+
+            <span className="mobile-menu-label">
+              {item.label}
+            </span>
+
             <b>↗</b>
           </a>
         ))}
