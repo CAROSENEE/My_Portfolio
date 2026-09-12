@@ -1,3 +1,7 @@
+/* ========================================
+   NAVBAR
+======================================== */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -21,6 +25,7 @@
   -webkit-backdrop-filter: blur(18px);
 }
 
+
 /* ========================================
    CAROSINE IDENTITY PANEL
 ======================================== */
@@ -28,11 +33,16 @@
 .identity-panel {
   position: relative;
 
+  width: 48vw;
+  min-width: 390px;
+
+  height: 82px;
+
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 
-  min-width: 270px;
-  height: 76px;
+  padding-left: 20px;
 
   isolation: isolate;
 }
@@ -41,6 +51,7 @@
   content: "";
 
   position: absolute;
+
   left: -35px;
   right: -35px;
   top: 50%;
@@ -71,18 +82,80 @@
   opacity: 1;
 }
 
+
+/* ========================================
+   LOGO
+======================================== */
+
 .navbar-logo {
   position: relative;
 
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 11px;
+
+  gap: 13px;
 
   color: inherit;
   text-decoration: none;
 
-  z-index: 2;
+  z-index: 5;
 }
+
+.logo-image {
+  width: 54px;
+  height: 54px;
+
+  object-fit: contain;
+  display: block;
+
+  filter:
+    drop-shadow(
+      0 0 7px rgba(79, 255, 176, 0.28)
+    );
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 3px;
+
+  position: relative;
+  z-index: 5;
+}
+
+.logo-name {
+  color: #f2f7fb;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+  line-height: 1.1;
+
+  white-space: nowrap;
+}
+
+.logo-sub {
+  color: #59ffb4;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+
+/* ========================================
+   OLD LOGO MARK
+   Kept for compatibility
+======================================== */
 
 .logo-mark {
   position: relative;
@@ -108,30 +181,19 @@
   z-index: 3;
 }
 
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
 
-  position: relative;
-  z-index: 3;
+/* ========================================
+   CIRCUIT LAYER
+======================================== */
+
+.identity-panel .circuit-animation {
+  z-index: 1;
 }
 
-.logo-name {
-  color: #f2f7fb;
-
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 1.8px;
+.identity-panel .navbar-logo {
+  z-index: 5;
 }
 
-.logo-sub {
-  color: #f2f7fb;
-  font-family: "Courier New", monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-}
 
 /* ========================================
    DESKTOP NAVIGATION
@@ -140,6 +202,7 @@
 .navbar-links {
   display: flex;
   align-items: center;
+
   gap: 30px;
 }
 
@@ -147,37 +210,53 @@
   position: relative;
 
   color: #7f8c99;
+
   text-decoration: none;
+
+  font-family: "Courier New", monospace;
 
   font-size: 13px;
   font-weight: 600;
+
   letter-spacing: 0.6px;
 
   transition:
-    color 0.2s ease,
-    transform 0.2s ease;
+    color 0.25s ease,
+    transform 0.25s ease,
+    font-size 0.25s ease,
+    text-shadow 0.25s ease;
 }
 
-.navbar-links a::before {
-  content: "./";
-  margin-right: 4px;
 
-  color: #3e4b57;
-
-  font-family: "Courier New", monospace;
-  font-size: 11px;
-
-  transition: color 0.2s ease;
-}
+/* ========================================
+   NAVIGATION HOVER
+======================================== */
 
 .navbar-links a:hover {
   color: #59ffb4;
+
   transform: translateY(-1px);
 }
 
-.navbar-links a:hover::before {
+
+/* ========================================
+   ACTIVE SECTION
+======================================== */
+
+.navbar-links a.active {
   color: #59ffb4;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  transform: translateY(-1px);
+
+  text-shadow:
+    0 0 8px rgba(89, 255, 180, 0.45),
+    0 0 18px rgba(89, 255, 180, 0.18);
 }
+
+
 
 /* ========================================
    STATUS + MENU
@@ -186,12 +265,14 @@
 .navbar-right {
   display: flex;
   align-items: center;
+
   gap: 14px;
 }
 
 .navbar-status {
   display: inline-flex;
   align-items: center;
+
   gap: 8px;
 
   padding: 8px 11px;
@@ -200,11 +281,14 @@
   border-radius: 999px;
 
   color: #687784;
+
   background: rgba(89, 255, 180, 0.035);
 
   font-family: "Courier New", monospace;
+
   font-size: 9px;
   font-weight: 700;
+
   letter-spacing: 1.3px;
 }
 
@@ -216,10 +300,16 @@
 
   background: #59ffb4;
 
-  box-shadow: 0 0 10px rgba(89, 255, 180, 0.7);
+  box-shadow:
+    0 0 10px rgba(89, 255, 180, 0.7);
 
   animation: navbarPulse 1.8s infinite;
 }
+
+
+/* ========================================
+   MOBILE TOGGLE
+======================================== */
 
 .menu-toggle {
   display: none;
@@ -264,6 +354,7 @@
   transform: translateY(-6px) rotate(-45deg);
 }
 
+
 /* ========================================
    MOBILE MENU
 ======================================== */
@@ -272,32 +363,58 @@
   display: none;
 }
 
+
 /* ========================================
-   ANIMATIONS
+   NAVBAR STATUS ANIMATION
 ======================================== */
 
 @keyframes navbarPulse {
   50% {
     opacity: 0.35;
+
     transform: scale(0.75);
   }
 }
 
+
 /* ========================================
-   RESPONSIVE
+   RESPONSIVE — 1100px
 ======================================== */
 
 @media (max-width: 1100px) {
-  .navbar-links {
-    gap: 18px;
-  }
-
   .navbar {
     padding: 0 5%;
   }
+
+  .navbar-links {
+    gap: 18px;
+  }
 }
 
-@media (max-width: 850px) {
+
+/* ========================================
+   RESPONSIVE — 900px
+======================================== */
+
+@media (max-width: 900px) {
+  .identity-panel {
+    width: auto;
+    min-width: auto;
+  }
+
+  .logo-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .logo-name {
+    font-size: 13px;
+  }
+
+  .logo-sub {
+    font-size: 10px;
+  }
+
   .navbar-links {
     gap: 12px;
   }
@@ -305,20 +422,24 @@
   .navbar-links a {
     font-size: 12px;
   }
-
-  .identity-panel {
-    min-width: 240px;
-  }
 }
+
+
+/* ========================================
+   MOBILE — 680px
+======================================== */
 
 @media (max-width: 680px) {
   .navbar {
     height: 68px;
+
     padding: 0 6%;
   }
 
   .identity-panel {
+    width: auto;
     min-width: auto;
+
     height: 68px;
   }
 
@@ -334,14 +455,21 @@
     display: flex;
   }
 
+  /* Hide circuit on mobile */
   .circuit-animation {
     display: none;
   }
+
+
+  /* ==============================
+     MOBILE MENU BOX
+  ============================== */
 
   .mobile-menu {
     position: absolute;
 
     top: calc(100% + 10px);
+
     left: 6%;
     right: 6%;
 
@@ -355,7 +483,8 @@
 
     background: rgba(7, 11, 14, 0.96);
 
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.45);
 
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -373,12 +502,20 @@
 
   .mobile-menu.show {
     opacity: 1;
+
     visibility: visible;
+
     transform: translateY(0);
   }
 
+
+  /* ==============================
+     MOBILE MENU HEADER
+  ============================== */
+
   .mobile-menu-header {
     display: flex;
+
     justify-content: space-between;
 
     padding: 10px 11px 13px;
@@ -386,16 +523,24 @@
     color: #4d5d68;
 
     font-family: "Courier New", monospace;
+
     font-size: 8px;
+
     letter-spacing: 1px;
 
     border-bottom: 1px solid #172129;
   }
 
+
+  /* ==============================
+     MOBILE MENU LINKS
+  ============================== */
+
   .mobile-menu a {
     display: grid;
 
-    grid-template-columns: 30px 1fr auto;
+    grid-template-columns:
+      30px 1fr auto;
 
     align-items: center;
 
@@ -405,133 +550,76 @@
 
     text-decoration: none;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.03);
 
     font-family: "Courier New", monospace;
+
     font-size: 12px;
 
     transition:
       color 0.2s ease,
-      padding-left 0.2s ease;
+      padding-left 0.2s ease,
+      text-shadow 0.2s ease;
   }
 
   .mobile-menu a:last-child {
     border-bottom: 0;
   }
 
+
+  /* Mobile hover */
+
   .mobile-menu a:hover {
     color: #59ffb4;
+
     padding-left: 15px;
   }
 
+
+  /* Mobile active */
+
+  .mobile-menu a.active {
+    color: #59ffb4;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    padding-left: 15px;
+
+    text-shadow:
+      0 0 8px rgba(89, 255, 180, 0.45);
+  }
+
+  .mobile-menu a.active .mobile-menu-label {
+    color: #59ffb4;
+  }
+
+  .mobile-menu a.active b {
+    color: #59ffb4;
+
+    text-shadow:
+      0 0 8px rgba(89, 255, 180, 0.6);
+  }
+
+
+  /* Mobile numbering */
+
   .mobile-menu a span {
     color: #59ffb4;
+
     font-size: 9px;
   }
 
   .mobile-menu a b {
     color: #53626d;
+
     font-size: 12px;
   }
-}
-
-@media (max-width: 500px) {
-  .logo-sub {
-    display: none;
-  }
-}/* ================================
-   FINAL IDENTITY PANEL POLISH
-   ================================ */
-
-.identity-panel {
-  min-width: 390px;
-  height: 82px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.navbar-logo {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  text-decoration: none;
-}
-
-.logo-image {
-  width: 54px;
-  height: 54px;
-  object-fit: contain;
-  display: block;
-  filter: drop-shadow(0 0 7px rgba(79, 255, 176, 0.28));
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3px;
-}
-
-.logo-name {
-  color: #f2f7fb;
-  font-family: "Courier New", monospace;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  line-height: 1.1;
-  white-space: nowrap;
-}
-
-.logo-sub {
-  color: #59ffb4;
-  font-family: "Courier New", monospace;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  line-height: 1;
-}
-
-/* Keep circuit behind the identity */
-.identity-panel .circuit-animation {
-  z-index: 1;
-}
-
-.identity-panel .navbar-logo {
-  z-index: 5;
-}
 
 
-/* ================================
-   MOBILE
-   ================================ */
-
-@media (max-width: 900px) {
-  .identity-panel {
-    min-width: auto;
-  }
-
-  .logo-image {
-    width: 48px;
-    height: 48px;
-  }
-
-  .logo-name {
-    font-size: 13px;
-  }
-
-  .logo-sub {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 600px) {
-  .identity-panel {
-    height: 72px;
-  }
+  /* Mobile logo */
 
   .navbar-logo {
     gap: 9px;
@@ -544,12 +632,24 @@
 
   .logo-name {
     font-size: 11px;
+
     letter-spacing: 0.4px;
   }
 
   .logo-sub {
     font-size: 9px;
+
     letter-spacing: 1.5px;
   }
 }
 
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 500px) {
+  .logo-sub {
+    display: none;
+  }
+}

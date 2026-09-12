@@ -1,165 +1,217 @@
 /* =========================================
-   CAROSINE CIRCUIT ANIMATION
-   ========================================= */
+   CAROSINE WIDE CIRCUIT SYSTEM
+========================================= */
 
 .circuit-animation {
-  position: absolute;
+  position: fixed;
 
-  top: 50%;
+  top: 0;
   left: 50%;
 
-  width: 520px;
-  height: 100px;
+  width: min(1500px, 100vw);
+  height: 82px;
 
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 
   pointer-events: none;
-  z-index: 0;
+
+  z-index: 1;
+
+  overflow: visible;
 }
 
 .circuit-svg {
   width: 100%;
   height: 100%;
+
   overflow: visible;
 }
 
 
 /* =========================================
    CIRCUIT TRACES
-   ========================================= */
+========================================= */
 
 .circuit-trace {
   fill: none;
 
   stroke: #59ffb4;
-  stroke-width: 1.2;
 
-  stroke-linecap: square;
+  stroke-width: 1.15;
+
+  stroke-linecap: round;
   stroke-linejoin: round;
+
+  stroke-dasharray: 4 7;
 
   opacity: 0.16;
 
-  stroke-dasharray: 5 7;
-
   filter:
-    drop-shadow(0 0 3px rgba(89, 255, 180, 0.18));
+    drop-shadow(0 0 3px rgba(89, 255, 180, 0.25));
 
-  animation: traceFlow 4.5s linear infinite;
+  animation:
+    circuitFlow 5s linear infinite;
 }
 
 
-/* Individual trace timing */
+/* Different flow timing */
 
 #left-main {
   animation-delay: 0s;
 }
 
+#left-mid {
+  animation-delay: 0.3s;
+}
+
 #left-upper {
-  animation-delay: 0.35s;
+  animation-delay: 0.6s;
+}
+
+#left-upper-small {
+  animation-delay: 0.9s;
 }
 
 #left-lower {
-  animation-delay: 0.7s;
+  animation-delay: 0.4s;
+}
+
+#left-lower-small {
+  animation-delay: 0.8s;
 }
 
 #right-main {
-  animation-delay: 0.15s;
+  animation-delay: 0.2s;
 }
 
-#right-upper {
+#right-mid {
   animation-delay: 0.5s;
 }
 
+#right-upper {
+  animation-delay: 0.7s;
+}
+
+#right-upper-small {
+  animation-delay: 1s;
+}
+
 #right-lower {
-  animation-delay: 0.85s;
+  animation-delay: 0.35s;
+}
+
+#right-lower-small {
+  animation-delay: 0.75s;
 }
 
 
-/* =========================================
-   MOVING CIRCUIT FLOW
-   ========================================= */
-
-@keyframes traceFlow {
+@keyframes circuitFlow {
   0% {
-    opacity: 0.08;
+    opacity: 0.07;
     stroke-dashoffset: 0;
   }
 
-  25% {
-    opacity: 0.25;
+  35% {
+    opacity: 0.18;
   }
 
-  50% {
-    opacity: 0.42;
+  55% {
+    opacity: 0.32;
   }
 
   75% {
-    opacity: 0.2;
+    opacity: 0.18;
   }
 
   100% {
-    opacity: 0.08;
-    stroke-dashoffset: -70;
+    opacity: 0.07;
+    stroke-dashoffset: -65;
   }
 }
 
 
 /* =========================================
-   CONNECTION DOTS
-   ========================================= */
+   CIRCUIT NODES
+========================================= */
 
 .circuit-node {
   fill: #59ffb4;
 
-  opacity: 0.2;
+  opacity: 0.25;
 
   filter:
-    drop-shadow(0 0 4px rgba(89, 255, 180, 0.5))
-    drop-shadow(0 0 8px rgba(89, 255, 180, 0.18));
+    drop-shadow(0 0 4px rgba(89, 255, 180, 0.65))
+    drop-shadow(0 0 9px rgba(89, 255, 180, 0.25));
 
   transform-box: fill-box;
   transform-origin: center;
+
+  animation:
+    nodePulse 2.8s ease-in-out infinite;
 }
 
-
-/* Dot animation */
-
-.circuit-active .circuit-node {
-  animation: nodePulse 2.6s ease-in-out infinite;
-}
-
-
-/* Different timing */
 
 .node-1 {
   animation-delay: 0s;
 }
 
 .node-2 {
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
 }
 
 .node-3 {
-  animation-delay: 0.6s;
+  animation-delay: 0.4s;
 }
 
 .node-4 {
-  animation-delay: 0.15s;
+  animation-delay: 0.6s;
 }
 
 .node-5 {
-  animation-delay: 0.45s;
+  animation-delay: 0.8s;
 }
 
 .node-6 {
+  animation-delay: 1s;
+}
+
+.node-7 {
+  animation-delay: 1.2s;
+}
+
+.node-8 {
+  animation-delay: 0.15s;
+}
+
+.node-9 {
+  animation-delay: 0.35s;
+}
+
+.node-10 {
+  animation-delay: 0.55s;
+}
+
+.node-11 {
   animation-delay: 0.75s;
+}
+
+.node-12 {
+  animation-delay: 0.95s;
+}
+
+.node-13 {
+  animation-delay: 1.15s;
+}
+
+.node-14 {
+  animation-delay: 1.35s;
 }
 
 
 @keyframes nodePulse {
   0%,
   100% {
-    opacity: 0.15;
+    opacity: 0.12;
     transform: scale(0.75);
   }
 
@@ -171,8 +223,36 @@
 
 
 /* =========================================
+   SMALL CIRCUIT DETAILS
+========================================= */
+
+.circuit-detail {
+  fill: #59ffb4;
+
+  opacity: 0.3;
+
+  filter:
+    drop-shadow(0 0 4px rgba(89, 255, 180, 0.45));
+
+  animation: detailPulse 3s ease-in-out infinite;
+}
+
+
+@keyframes detailPulse {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+
+/* =========================================
    MOVING LIGHT DOTS
-   ========================================= */
+========================================= */
 
 .circuit-pulse {
   fill: #59ffb4;
@@ -181,12 +261,10 @@
 
   filter:
     drop-shadow(0 0 4px rgba(89, 255, 180, 1))
-    drop-shadow(0 0 9px rgba(89, 255, 180, 0.7))
-    drop-shadow(0 0 15px rgba(89, 255, 180, 0.3));
+    drop-shadow(0 0 9px rgba(89, 255, 180, 0.8))
+    drop-shadow(0 0 17px rgba(89, 255, 180, 0.35));
 }
 
-
-/* Activate moving dots */
 
 .circuit-active .circuit-pulse {
   opacity: 1;
@@ -195,20 +273,24 @@
 
 /* =========================================
    PAUSED STATE
-   ========================================= */
+========================================= */
 
 .circuit-paused .circuit-trace,
 .circuit-paused .circuit-node,
-.circuit-paused .circuit-pulse {
+.circuit-paused .circuit-detail {
   animation-play-state: paused !important;
 }
 
 .circuit-paused .circuit-trace {
-  opacity: 0.08;
+  opacity: 0.06;
 }
 
 .circuit-paused .circuit-node {
-  opacity: 0.1;
+  opacity: 0.08;
+}
+
+.circuit-paused .circuit-detail {
+  opacity: 0.08;
 }
 
 .circuit-paused .circuit-pulse {
@@ -218,15 +300,15 @@
 
 /* =========================================
    RESPONSIVE
-   ========================================= */
+========================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .circuit-animation {
-    width: 430px;
+    width: 100vw;
   }
 
   .circuit-trace {
-    stroke-width: 1.1;
+    stroke-width: 1;
   }
 }
 
