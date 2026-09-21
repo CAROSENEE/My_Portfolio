@@ -25,7 +25,7 @@ function Footer() {
 
           <div className="footer-links">
             <a
-              href="https://github.com/CAROSINE"
+              href="https://github.com/CAROSENEE"
               target="_blank"
               rel="noreferrer"
             >
@@ -47,7 +47,7 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© {year} CAROSINE. ALL RIGHTS RESERVED.</span>
+          <span>© {year} CAROSENEE. ALL RIGHTS RESERVED.</span>
 
           <span className="footer-status">
             <i></i>

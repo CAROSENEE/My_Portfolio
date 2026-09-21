@@ -125,7 +125,7 @@ function Navbar() {
             </span>
 
             <span className="logo-sub">
-              CAROSINE
+              CAROSENEE
             </span>
           </span>
         </a>

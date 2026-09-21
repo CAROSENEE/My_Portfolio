@@ -3,8 +3,8 @@ import "./Contact.css";
 const contactLinks = [
   {
     label: "GITHUB",
-    value: "@CAROSINE",
-    href: "https://github.com/CAROSINE",
+    value: "@CAROSENEE",
+    href: "https://github.com/CAROSENEE",
     type: "CODE",
   },
   {
