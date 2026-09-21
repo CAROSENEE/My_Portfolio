@@ -3,19 +3,19 @@ import logo from "../assets/carosine-emblem.png";
 import CircuitAnimation from "./CircuitAnimation";
 import "./Navbar.css";
 
+const navItems = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Research", href: "#research" },
+  { label: "Contact", href: "#contact" },
+];
+
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
-
-  const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
-    { label: "Research", href: "#research" },
-    { label: "Contact", href: "#contact" },
-  ];
 
   /* ========================================
      TOP / SCROLL DETECTION
